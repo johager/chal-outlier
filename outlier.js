@@ -37,7 +37,7 @@ function outlier(arr) {
 
 function testOutlier(inp, exp) {
     const res = outlier(inp)
-    passed = res == exp || (isNaN(res) && isNaN(exp))
+    const passed = res == exp || (isNaN(res) && isNaN(exp))
     console.log("passed:", passed, ` inp: ${inp}  res: ${res}  exp: ${exp}`)
 }
 
