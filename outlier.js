@@ -19,16 +19,16 @@ function outlier(arr) {
             // even
             even = num
             evenCount += 1
-            if(evenCount > 1 && !isNaN(odd)) {
-                return odd
-            }
         } else {
             // odd
             odd = num
             oddCount += 1
-            if(oddCount > 1 && !isNaN(even)) {
-                return even
-            }
+        }
+        if(evenCount > 1 && !isNaN(odd)) {
+            return odd
+        }
+        if(oddCount > 1 && !isNaN(even)) {
+            return even
         }
     }
 
@@ -37,9 +37,12 @@ function outlier(arr) {
 
 function testOutlier(inp, exp) {
     const res = outlier(inp)
-    console.log("passed:", res === exp, ` inp: ${inp}  res: ${res}  exp: ${exp}`)
+    passed = res == exp || (isNaN(res) && isNaN(exp))
+    console.log("passed:", passed, ` inp: ${inp}  res: ${res}  exp: ${exp}`)
 }
 
 testOutlier([2, 4, 0, 100, 4, 11, 2602, 36], 11)
 testOutlier([160, 3, 1719, 19, 11, 13, -21], 160)
-// testOutlier([2, 4, 0], NaN)
+testOutlier([2, 4, 1], 1)
+testOutlier([1, 3, 2], 2)
+testOutlier([2, 4, 0], NaN)
